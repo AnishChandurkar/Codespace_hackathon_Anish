@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Code2, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/Logo";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,22 +28,13 @@ export const Navbar = () => {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        isScrolled
-          ? "glass-strong py-3"
-          : "bg-transparent py-5"
+        isScrolled ? "glass-strong py-3" : "bg-transparent py-5"
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="relative">
-            <div className="absolute inset-0 bg-primary/30 blur-xl rounded-full group-hover:bg-primary/50 transition-all duration-300" />
-            <Code2 className="h-8 w-8 text-primary relative z-10 group-hover:scale-110 transition-transform duration-300" />
-          </div>
-          <span className="text-xl font-bold tracking-tight">
-            <span className="gradient-text">Code</span>
-            <span className="text-foreground">space</span>
-          </span>
+        <Link to="/" className="group">
+          <Logo />
         </Link>
 
         {/* Desktop Navigation */}
@@ -69,13 +61,17 @@ export const Navbar = () => {
         {/* Auth Buttons */}
         <div className="hidden md:flex items-center gap-3">
           <Link to="/auth?mode=login">
-            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-muted-foreground hover:text-foreground"
+            >
               Sign In
             </Button>
           </Link>
           <Link to="/auth?mode=signup">
-            <Button 
-              size="sm" 
+            <Button
+              size="sm"
               className="glow-button bg-primary hover:bg-primary/90 text-primary-foreground"
             >
               Get Started
@@ -88,7 +84,11 @@ export const Navbar = () => {
           className="md:hidden p-2 text-foreground"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isMobileMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
         </button>
       </div>
 
@@ -112,12 +112,18 @@ export const Navbar = () => {
               </Link>
             ))}
             <hr className="border-border my-2" />
-            <Link to="/auth?mode=login" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link
+              to="/auth?mode=login"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               <Button variant="ghost" className="w-full justify-start">
                 Sign In
               </Button>
             </Link>
-            <Link to="/auth?mode=signup" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link
+              to="/auth?mode=signup"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               <Button className="w-full glow-button bg-primary">
                 Get Started
               </Button>

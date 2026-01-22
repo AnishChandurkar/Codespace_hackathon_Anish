@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Code2, Github, Twitter, Linkedin } from "lucide-react";
+import { Github, Twitter, Linkedin } from "lucide-react";
+import { Logo } from "@/components/Logo";
 
 export const Footer = () => {
   const footerLinks = {
@@ -34,24 +35,31 @@ export const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <Code2 className="h-6 w-6 text-primary" />
-              <span className="text-lg font-bold">
-                <span className="gradient-text">Code</span>
-                <span className="text-foreground">space</span>
-              </span>
+            <Link to="/" className="mb-4 inline-block">
+              <Logo size={24} />
             </Link>
+
             <p className="text-sm text-muted-foreground mb-4">
               The modern collaborative code editor for teams who move fast.
             </p>
+
             <div className="flex gap-3">
-              <a href="#" className="p-2 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors">
+              <a
+                href="#"
+                className="p-2 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors"
+              >
                 <Twitter className="h-4 w-4 text-muted-foreground" />
               </a>
-              <a href="#" className="p-2 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors">
+              <a
+                href="#"
+                className="p-2 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors"
+              >
                 <Github className="h-4 w-4 text-muted-foreground" />
               </a>
-              <a href="#" className="p-2 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors">
+              <a
+                href="#"
+                className="p-2 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors"
+              >
                 <Linkedin className="h-4 w-4 text-muted-foreground" />
               </a>
             </div>
@@ -82,8 +90,9 @@ export const Footer = () => {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Codespace. All rights reserved.
+            © {new Date().getFullYear()} Made by React-ive
           </p>
+
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <span className="flex items-center gap-1">
               <span className="w-2 h-2 bg-success rounded-full animate-pulse" />

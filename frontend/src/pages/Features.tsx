@@ -280,7 +280,7 @@ const Features = () => {
             Ready to start building?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-            Join thousands of developers who code with Codespace every day.
+            Join thousands of developers who code with CodeSpace every day.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/auth?mode=signup">

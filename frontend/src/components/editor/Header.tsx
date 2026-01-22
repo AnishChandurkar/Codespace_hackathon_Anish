@@ -1,6 +1,9 @@
-import { Code2, Users, Wifi } from "lucide-react";
+import { Users, Wifi } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Logo } from "@/components/Logo";
+import { Link } from "react-router-dom";
+
 
 interface Collaborator {
   id: string;
@@ -28,26 +31,28 @@ const colorClasses = {
   "collab-4": "bg-collab-4",
 };
 
-export function Header({ roomId = "room-abc123", collaborators = defaultCollaborators }: HeaderProps) {
+export function Header({
+  roomId = "room-abc123",
+  collaborators = defaultCollaborators,
+}: HeaderProps) {
   const activeCount = collaborators.filter((c) => c.isActive).length;
 
   return (
     <header className="h-14 border-b border-border bg-card flex items-center justify-between px-4 shrink-0">
       {/* Left: Logo */}
       <div className="flex items-center gap-3">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <Code2 className="w-5 h-5 text-primary-foreground" />
-          </div>
-          <span className="font-semibold text-lg tracking-tight">CodeSync</span>
-        </div>
+        <Link to="/" className="hover:opacity-90 transition-opacity">
+          <Logo size={22} />
+        </Link>
       </div>
+
 
       {/* Center: Room indicator */}
       <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/50 border border-border">
         <Wifi className="w-3.5 h-3.5 text-success" />
         <span className="text-sm text-muted-foreground">
-          Session: <span className="text-foreground font-medium">{roomId}</span>
+          Session:{" "}
+          <span className="text-foreground font-medium">{roomId}</span>
         </span>
       </div>
 
@@ -57,24 +62,36 @@ export function Header({ roomId = "room-abc123", collaborators = defaultCollabor
           <Users className="w-4 h-4" />
           <span>{activeCount} online</span>
         </div>
-        
+
         <div className="flex -space-x-2">
           {collaborators.map((collaborator) => (
             <Tooltip key={collaborator.id}>
               <TooltipTrigger asChild>
                 <div className="relative">
-                  <Avatar className={`w-8 h-8 border-2 border-card ring-2 ${collaborator.isActive ? "ring-success/30" : "ring-transparent"}`}>
-                    <AvatarFallback className={`${colorClasses[collaborator.color]} text-xs font-medium text-white`}>
+                  <Avatar
+                    className={`w-8 h-8 border-2 border-card ring-2 ${collaborator.isActive
+                        ? "ring-success/30"
+                        : "ring-transparent"
+                      }`}
+                  >
+                    <AvatarFallback
+                      className={`${colorClasses[collaborator.color]} text-xs font-medium text-white`}
+                    >
                       {collaborator.initials}
                     </AvatarFallback>
                   </Avatar>
+
                   {collaborator.isActive && (
                     <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-success rounded-full border-2 border-card" />
                   )}
                 </div>
               </TooltipTrigger>
+
               <TooltipContent>
-                <p>{collaborator.name} {collaborator.isActive ? "(online)" : "(away)"}</p>
+                <p>
+                  {collaborator.name}{" "}
+                  {collaborator.isActive ? "(online)" : "(away)"}
+                </p>
               </TooltipContent>
             </Tooltip>
           ))}

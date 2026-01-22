@@ -64,7 +64,7 @@ const Auth = () => {
 
         toast({
           title: "Account created!",
-          description: "Welcome to Codespace. Redirecting to the editor...",
+          description: "Welcome to CodeSpace. Redirecting to the editor...",
         });
       } else {
         const { error } = await supabase.auth.signInWithPassword({
@@ -141,7 +141,7 @@ const Auth = () => {
           <p className="text-lg text-muted-foreground max-w-md">
             {mode === "login"
               ? "Sign in to access your projects, collaborate with your team, and continue building amazing things."
-              : "Create your free account and join thousands of developers using Codespace to code faster."}
+              : "Create your free account and join thousands of developers using CodeSpace to code faster."}
           </p>
 
           {/* Animated code snippet */}
