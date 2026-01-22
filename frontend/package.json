@@ -1,8 +1,10 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "codespace",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "author": "React-ive",
+  "description": "Collaborative real-time code editor with instant execution.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
